@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OrangeCMS</title>
+</head>
+<style>
+body {
+    background-color: #90C0D0;
+}
+#main {
+  width: 460px;
+  height: 633px;
+  margin: 10px auto;
+}
+#orange-tree {
+  width: 460px;
+  height: 633px;
+  position: absolute;
+  background-image: url('orangetree.png');
+  -webkit-filter: blur(6px) drop-shadow(6px 4px 2px rgba(20,180,0,0.7));
+  filter: blur(6px) drop-shadow(6px 4px 2px rgba(20,180,0,0.7));
+}
+
+a {
+  margin: 10px;
+  text-decoration: none;
+  position: relative;
+  left: 70px;
+}
+</style>
+
+<body>
+
+<div id="main">
+    <div id="orange-tree"></div>
+    <script>
+      var a = function(m,n){return m.appendChild(n);};
+      var b = function(n){return document.getElementById(n);};
+      var c = function(n){return document.createElement(n);};
+      var d = b("main");
+      var e;
+      var L = ["cms","dan","edu","img","sec","www"];
+      for (l in L) {
+        e = c("a");
+        e.className = L[l];
+        e.href="http://"+L[l]+".orangecms.org";
+        var i = c("img");
+        i.src="orange.png";
+        e.style.top=(100+(Math.random(10)*200))+"px";
+        a(e,i);
+        console.log(e);
+        a(d,e);
+      }
+    </script>
+</div>
+
+    <script src="snap.svg-min.js"></script>
+    <script>
+/*
+        var bx = 600, by = 400,
+            sx = 300, sy = 0,
+            mx = 8,   my = 12,
+            cx = 7,   cy = 9,
+            oy = 300,
+            m = 1.5,
+            d = 3;
+        tree = Snap(bx,by);
+//        tree.line(sx,by,sx,oy).attr({stroke: "#000",strokeWidth:m});
+        oTree(tree,m,d,sx,sy,oy,mx,my,cx,cy);
+        function oTree(tree,m,d,tx,ty,oy,mx,my,cx,cy){
+            var lx = tx-m*(mx*Math.pow(2,d)-Math.random()*(cx-d));
+            var ly = ty+m*(my*Math.pow(2,d)-Math.random()*(cy-d));
+            var rx = tx+m*(mx*Math.pow(2,d)-Math.random()*(cx-d));
+            var ry = ty+m*(my*Math.pow(2,d)-Math.random()*(cy-d));
+            if (d>0) {
+//                var lt = tree.line(tx,oy-ty,lx,oy-ly).attr({stroke: "#000",strokeWidth:m});
+//                var rt = tree.line(tx,oy-ty,rx,oy-ry).attr({stroke: "#000",strokeWidth:m});
+                oTree(tree,m,d-1,lx,ly,oy,mx,my,cx,cy);
+                oTree(tree,m,d-1,rx,ry,oy,mx,my,cx,cy);
+            }
+            else {
+                tree.image("orange.png",lx,oy-ly).mousedown(function(){alert("orange :)");});
+            }
+        }
+        document.body.onload=function(){};
+*/
+    </script>
+
+</body>
+</html>
