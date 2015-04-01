@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>OrangeCMS</title>
+    <title>Orange CMS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
 </head>
 <style>
 body {
     background-color: #ffffff;
+}
+figure {
+    display: inline-block;
+    background-color: #1a3a37;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    border-color: #1a3a37;
+    padding: 3px;
+    color: #fefe00;
+    font: bold small mono;
+}
+figcaption {
+    margin: 1px;
+}
+a {
+    margin: 3px;
+    text-decoration: none;
+    position: relative;
 }
 #main {
     width: 460px;
@@ -16,24 +36,24 @@ body {
     width: 460px;
     height: 633px;
     position: absolute;
-    background-image: url('orangetree.png');
-    -webkit-filter: blur(6px) drop-shadow(6px 4px 2px rgb(255,175,0));
-    filter: blur(6px) drop-shadow(6px 4px 2px rgba(26,58,55,1));
+    background-image: url('img/tree.svg');
 }
-figure {
+#root {
     display: inline-block;
-    background-color: rgba(200, 200, 200, 0.3);
+    width: 460px;
+    position: absolute;
+    top: 600px;
+}
+.root {
+    display: inline-block;
+    background-color: #1a3a37;
     -webkit-border-radius: 5px;
     border-radius: 5px;
-    border-color: rgba(200, 200, 200, 0.3);
-    padding: 3px;
-    color: #1a3a37;
-    font: bold small Verdana;
-}
-a {
-    margin: 10px;
-    text-decoration: none;
-    position: relative;
+    border-color: #1a3a37;
+    padding: 4px;
+    margin: 3px 50px;
+    font: bold small mono;
+    color: #fefe00;
 }
 </style>
 
@@ -41,29 +61,42 @@ a {
 
 <div id="main">
     <div id="orange-tree"></div>
+    <div id="root"></div>
     <script>
         var a = function(m,n){return m.appendChild(n);};
         var b = function(n){return document.getElementById(n);};
         var c = function(n){return document.createElement(n);};
         var d = b("main");
-        var L = ["cms","dan","edu","img","sec","www"];
-        for (l in L) {
+        var j = function(){return Math.random()*16*(Math.random()<.5?1:-1)};
+        var L = ["dan.","img.","/rss","edu.","nix.","sec.","cms.","www.","/blog"];
+        for (var l in L) {
             var e = c("a");
             var f = c("figure");
             var g = c("figcaption");
-            var h = L[l];
+            var r = /^\/.*/;
+            var h = r.test(L[l])?'test.':L[l];
+            var o = r.test(L[l])?L[l]:'';
             var i = c("img");
-            var j = function(){return Math.random()*16*(Math.random()<.5?1:-1)};
-            e.href = "http://"+h+".orangecms.org";
-            e.className = h;
-            e.style.top = 100+j()+"px";
-            e.style.left = 20+j()+"px";
-            g.innerHTML = h+".";
-            i.src = "orange.png";
+            e.href = "http://"+h+"orangecms.org"+o;
+            e.className = h+o;
+            e.style.top = 70+j()+"px";
+            e.style.left = 40+j()+"px";
+            g.innerHTML = h&&o?o:h+o;
+            i.src = "img/orange.png";
             a(f,g);
             a(f,i);
             a(e,f);
             a(d,e);
+        }
+        var k = b("root");
+        var M = {"ast":"http://www.cs.vu.nl/~ast","djb":"http://cr.yp.to/djb.html","rms":"https://stallman.org/"};
+        for (var m in M) {
+            var n = c("a");
+            n.href = M[m];
+            n.className = "root";
+            n.style.left = 80+j()+"px";
+            n.innerHTML = m;
+            a(k,n);
         }
     </script>
 </div>
